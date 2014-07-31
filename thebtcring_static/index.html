@@ -1,0 +1,397 @@
+<!DOCTYPE htmil
+PUBLIC "-//W3C//DTD HTML 4.01//EN"
+      "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+  <head profile="http://www.w3.org/2005/10/profile">
+  <link rel="icon" 
+      type="image/jpeg" 
+      href="http://example.com/bitcoinfav.jpeg">
+
+    <meta charset="utf-8">
+    <title>http://theBTCring.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      
+    <!-- Start of Javascript --!>
+    <script>
+
+      var num = 0;
+
+      function sebMsg(btcval) {
+        var message;
+        if (btcval < 5) {
+          message = "You would have been better off asking for <img width=270px src='http://www.vegetablesinfo.com/images/carrot.png'>";
+          return message;
+        }
+        else if (btcval > 200) {
+          message = "Feel special princess. " +btcval+" BTC!!!!, Some serious moolah was spent on your ring.";
+          return message;
+        }
+        else {
+          message = "Ohhh looks like you just stored your future child's college tuition.";
+          return message;
+        }
+      }
+
+      function displayOutput(btcaddress) {
+        var apiaddress = 'https://blockchain.info/q/addressbalance/'
+        var fn = '#outputvalue';
+        var msg = '#messaging';
+        var btcvalue;
+
+        apiaddress = apiaddress + btcaddress;
+
+        $.get(
+          apiaddress,
+          {}, //parameters
+          function(data) {
+            num = parseInt(data);
+            num = num/100000000;
+            $(fn).html(num+" BTC");
+            $(msg).html('<h1>...thinking...</h1>');
+            var message = sebMsg(num);
+            $(msg).html('<h1>'+message+'</h1>');
+
+          }
+        );
+
+      }
+
+
+      $( document ).ready(function() {
+
+        $('#bitcoinvalues').change(function () {
+          displayOutput(this.value); //grab the value selected
+        });
+        $('#custombtc').submit(function (e) {
+          e.preventDefault();
+          var data = $(this).find('input[name="userbtc"]').val();
+          displayOutput(data);
+        });
+
+      });
+    </script>
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+
+      #nothin {
+	position: relative;
+	background-color: #eee;
+	height: 600px;
+      }
+
+      #nothin img {
+	margin-top: 170px;
+      }
+
+      #underconstruction {
+	opacity: 0.3;
+	position: absolute;
+	top: 0;
+      }
+
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+      
+      /* Custom messaging */
+      #messaging {
+        width: 80%;
+        height: 300px;
+        background-color: #ffeeff;
+        box-shadow: 10px 10px 5px #888888;
+        padding: 50px;
+        letter-spacing: 1.5px;
+        margin-left: 2%;
+      }
+
+      #messaging h1 {
+        font-weight: normal;
+        color: #568;
+        line-height: 130%;
+      }
+
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#design">Design</a></li>
+          <li><a href="#checkBTC">Lookup</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <h3 class="muted">www.thebtcring.com</h3>
+      </div>
+
+      <hr>
+
+      <div class="jumbotron">
+        <h1>The BTC Ring</h1>
+        <h2>Leave Those Diamonds in the Rough</h2>
+        <p class="lead">The only bitcoin ring that marries real value and design. Don't store your value in a rock, store it in a block.</p>
+        <a class="btn btn-large btn-success" href="#design">Design a Ring</a>
+        <a class="btn btn-large btn-success" href="#checkBTC">Check How Much You're Loved</a>
+      </div>
+
+      <hr>
+
+      <div class="row-fluid">
+        <div class="span4"><img src="splash00.png"></div>
+        <div class="span4"><img src="splash01.jpg"></div>
+        <div class="span4"><img src="splash02.png"></div>
+      </div>
+
+      <hr>
+
+      <div class="row-fluid">
+
+<iframe width="700" height="480" src="//www.youtube.com/embed/OO3bYvDp4FA" frameborder="0" allowfullscreen></iframe>
+
+      </div>
+
+      <div class="row-fluid marketing">
+        <div class="span6">
+          <h4>Replacability</h4>
+          
+          <p>Just because something has value doesn't mean that all
+          should be lost when the physical ring is misplaced. The real value of
+          the BTC ring lies in the Blockchain.</p>
+
+          <h4>Value</h4>
+          
+          <p>You and your friends won't need a jeweler to tell you <strong>exactly</strong> how much this ring is worth.</p>
+
+          <h4>Decoupling Design</h4>
+
+          <p>Beautiful rings come and go with the times but the backing of
+          these rings should not. The BTC ring can be reprinted to keep up with
+          the latest styles.</p>
+          
+        </div>
+
+        <div class="span6">
+
+          <h4>Re-upping</h4>
+
+          <p>As salaries increase, you can upgrade the BTC ring without going
+          to the jeweler.</p>
+
+          <h4>Contract</h4>
+
+          <p>Splitting the private key allows mutual decisions about what to do with the BTC in the future.</p>
+
+          <h4>Bling</h4>
+          
+          <p>Diamonds are shiny, but then your friends don't know how much was spent
+          on you. With a BTC ring, the bling is in the code.</p>
+        
+        </div>
+      </div>
+
+      <div style="margin-top: -35px" class="row-fluid">
+
+        <center>
+        <h4>Support Bitcoin Mining not Diamond Mining</h4>
+        </center>
+
+      </div>
+
+      <hr>
+
+      <a name="checkBTC"></a>
+
+      <h1>Check your BTC address</h1>
+      <p>See how much you are really cared for. Value lookup by theBTCring. Use webcam (under construction) for faster input or manually enter input below.</p>
+      <div class="row-fluid marketing">
+        
+          <div class="span4">
+            Some prestored bitcoin ring values
+          </div>
+          <div class="span6">
+            <select id="bitcoinvalues">
+              <option value="">in our system</option>
+              <option value="1HSjqD6jKrenh8bpFRkbVuQCHGU9jQDfUg">1HSjqD6jKrenh8bpFRkbVuQCHGU9jQDfUg</option>
+              <option value="1C2HNrPEebMgzxjTN7QvpbUyFHCpZ4Hh9c">1C2HNrPEebMgzxjTN7QvpbUyFHCpZ4Hh9c</option>
+              <option value="1CjPR7Z5ZSyWk6WtXvSFgkptmpoi4UM9BC">1CjPR7Z5ZSyWk6WtXvSFgkptmpoi4UM9BC</option>
+            </select>
+          </div>
+
+      </div>
+      <div class="row-fluid marketing">
+        <div class="span4">
+          Enter in your own
+        </div>
+        <div class="span6">
+          <form id="custombtc">
+            <input name="userbtc" type="text">
+            <input type="submit" value="Submit">
+          </form>
+
+        </div>
+      </div>
+      <div class="row-fluid marketing">
+
+        <div class="span4">
+          Current value
+        </div>
+        <div id="outputvalue" class="span6">
+          0
+        </div>
+
+      </div>
+      <div class="row-fluid marketing">
+
+        <div id="messaging">
+          <h1>Until you look up the value of your btcring bitcoin address, you are not going to know the meaning of love. -A wise man from thebtcring.com</h1>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <a name="design"></a>
+
+      <div id="nothin">
+	<center><img src="traffic_cone.png"></center>
+      <div id="underconstruction">
+      <div class="row-fluid marketing">
+        <h1>Design Your Ring Today</h1>
+	<h2>(Under Construction)</h2>
+        <p>Just enter in the fields below. Then, when you receive your generted .stl file, take it to your closest 3D Printing shop (see map here) and get the special components made. The possibilities are endless!</p>
+        <div class="row-fluid marketing">
+
+          <div class="span4">
+            <p>Select ring size</p>
+          </div>
+          <div class="span6">
+            <select>
+              <option value="4Medium">4 Medium</option>
+              <option value="6Medium">6 Medium</option>
+              <option value="8Medium">8 Medium</option>
+              <option value="10Medium">10 Medium</option>
+              <option value="12Medium">12 Medium</option>
+            </select>
+          </div>
+
+        </div><!--row--!>
+
+
+        <div class="row-fluid marketing">
+
+          <div class="span4">
+            <p>Bitcoin address</p><p><a href="#">learn how to get one</a></p>
+          </div>
+
+          <div class="span6">
+            <select>
+              <option value="addrA"></option>
+              <option value="addrB"></option>
+              <option value="addrC"></option>
+              <option value="addrD"></option>
+              <option value="addrE"></option>
+            </select>
+          </div>
+
+        </div><!--row--!>
+
+      </div>
+
+      </div></div>
+
+	<hr>
+      
+      <a name="contact"></a>
+      <div class="row-fluid marketing">
+
+        <span class="span8">
+        <a class="twitter-timeline" href="https://twitter.com/theBTCring" data-widget-id="494309679875366912">Tweets by @theBTCring</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </span>
+
+        <span class="span4">
+          <h1>Contact</h1>
+          <h3><a href="mailto:info@thebtcring.com">info@thebtcring.com</a></h3>
+          <p>In the meantime, check out what is being said about thebtcring.com right now</p>
+	  <ul>
+	  <li>thebtcring on the forums at <a href="https://bitcointalk.org/index.php?topic=716981.0">bitcointalk.org ...</a>
+	  </ul>
+        </span>
+
+      </div><!-- row-fluid marketing --!>
+
+      <div class="footer">
+        <p><img width=55 src="http://www.nomarket.org/wp-content/uploads/2013/09/tipjar.gif"><img width=100 src="tip_qr.png">1ringTAEkR1ddTtBdaMn3WD1v21aXvSbc</p>
+        <p> &copy; Created July 26, 2014</p>
+      </span>
+
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+  </body>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1406110-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</html>
